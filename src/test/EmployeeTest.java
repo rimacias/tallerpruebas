@@ -2,14 +2,19 @@ package test;
 
 import static org.junit.Assert.*;
 
+import java.math.BigDecimal;
+
 import org.junit.After;
 import org.junit.AfterClass;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-public class EmployeeTest {
+import tallerpruebas.*;
 
+public class EmployeeTest {
+	
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
 	}
@@ -28,12 +33,15 @@ public class EmployeeTest {
 
 	@Test
 	public void testEmployee() {
-		fail("Not yet implemented");
+		assertNotNull(new Employee(3000f, "USD", 0.15f, EmployeeType.Manager));
 	}
 
 	@Test
 	public void testCs() {
-		fail("Not yet implemented");
+		Employee usdManager = new Employee(3000f, "USD", 15f, EmployeeType.Manager);
+		Employee euManager = new Employee(3000f, "EU", 25f, EmployeeType.Manager);
+		Assert.assertEquals(new BigDecimal (usdManager.cs()), new BigDecimal(0));
+		Assert.assertEquals(new BigDecimal (euManager.cs()), new BigDecimal(0));
 	}
 
 	@Test
